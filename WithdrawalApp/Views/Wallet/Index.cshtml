@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WithdrawalApp.Models.Transaction>
+@{
+    ViewData["Title"] = "Wallet";
+    var balance = ViewBag.Balance ?? 0m;
+}
+
+<div class="container mt-4">
+    <h1 class="mb-3 text-center display-4">Wallet Withdrawal Module</h1>
+
+    <h2 class="mb-3" id="balance">Wallet Balance: ₹@String.Format("{0:N2}", balance)</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+         <h5 class="card-title mb-3">Withdraw Funds</h5>
+
+    <form asp-action="Withdraw" method="post" id="withdrawForm">
+        @Html.AntiForgeryToken()
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input type="number" class="form-control" name="amount" step="0.01" placeholder="Enter amount" required />
+            </div>
+            <div class="col-md-4">
+        <select class="form-select" name="method">
+            <option>Card</option>
+            <option>UPI</option>
+            <option>Bank Transfer</option>
+        </select>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" type="submit">Withdraw</button>
+        </div>
+    </form>
+    </div>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-info">@TempData["Error"]</div>
+    }
+
+    <h2 class="card-title">Transaction History</h2>
+    <table border="1" cellpadding="6" cellspacing="0" id="txTable">
+        <thead>
+            <tr>
+                <th>ID</th><th>Amount</th><th>Method</th><th>Status</th><th>Timestamp</th><th>Wallet After</th><th>GatewayRef</th><th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="txBody">
+        @foreach (var tx in Model)
+        {
+            <tr data-id="@tx.Id">
+                <td>@tx.Id</td>
+                <td>₹@tx.Amount</td>
+                <td>@tx.PaymentMethod</td>
+                <td>@tx.Status</td>
+                <td>@tx.Timestamp.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>₹@tx.WalletBalanceAfter</td>
+                <td>@tx.GatewayReference</td>
+                <td>
+                    @if (tx.Status == WithdrawalApp.Models.TransactionStatus.Pending || tx.Status == WithdrawalApp.Models.TransactionStatus.Success)
+                    {
+                        <form asp-action="Cancel" method="post" style="display:inline" class="cancelForm">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@tx.Id" />
+                            <button class="btn btn-warning" type="submit">Cancel</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

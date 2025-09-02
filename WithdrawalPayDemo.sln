@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentSimulator", "PaymentSimulator\PaymentSimulator.csproj", "{B832BF1C-7BAA-4033-BE59-2455B9FD2507}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithdrawalApp", "WithdrawalApp\WithdrawalApp.csproj", "{618C9F05-EA0C-4CF9-906D-EE283552B166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B832BF1C-7BAA-4033-BE59-2455B9FD2507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B832BF1C-7BAA-4033-BE59-2455B9FD2507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B832BF1C-7BAA-4033-BE59-2455B9FD2507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B832BF1C-7BAA-4033-BE59-2455B9FD2507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{618C9F05-EA0C-4CF9-906D-EE283552B166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618C9F05-EA0C-4CF9-906D-EE283552B166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618C9F05-EA0C-4CF9-906D-EE283552B166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618C9F05-EA0C-4CF9-906D-EE283552B166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36F7C8CB-58E7-494F-85D4-8A72FF0847E0}
+	EndGlobalSection
+EndGlobal
